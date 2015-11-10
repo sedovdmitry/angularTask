@@ -1,0 +1,54 @@
+<html ng-app="myApp">
+    <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/taskman.css"/>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,300,700" rel="stylesheet" type="text/css">
+<style>
+@media print {
+  .visible-print  { display: inherit !important; }
+  .hidden-print   { display: none !important; } 
+}
+table {
+    font-size: 10pt; /* Размер шрифта в пунктах */ 
+   }
+
+
+</style>
+    </head>
+    <body ng-controller="tasksController">
+    
+    <div class="navbar navbar-default" id="navbar">
+    <div class="container" id="navbar-container">
+	<div class="navbar-header">
+		<a href="#" class="navbar-brand">
+			<small>
+				Текущие задания для работников ООО "СТР-Турбогаз" 
+			</small>
+		</a><!-- /.brand -->
+		
+	</div><!-- /.navbar-header -->
+	<div class="navbar-header pull-right" role="navigation">
+        <a onClick="window.print()" class="btn btn-large btn-danger nav-button-margin"> <i class="glyphicon glyphicon-print"></i>&nbsp;Print</a>
+        <!-- <a href="http://angularcode.com/download-link/?url=https://app.box.com/s/8e2hjljpurg47wi8h0ec" class="btn btn-sm btn-warning nav-button-margin"> <i class="glyphicon glyphicon-download"></i>&nbsp;Download Project</a> -->
+	</div>
+	</div>
+	</div>
+	<div class="row">
+    	<div class="container"><!--
+    		<blockquote><h1><a href="http://angularcode.com/simple-task-manager-application-using-angular-js-php-mysql/">Task Manager Application using Angular JS</a></h1></blockquote> -->
+    		<div class="col-sm-12">
+    			<div ng-include src="'partials/task.html'"></div>
+    		</div>
+    	
+    	</div>
+    </div>
+
+
+
+    
+    	
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="app/app.js"></script>
+    </body>
+</html>

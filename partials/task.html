@@ -1,0 +1,130 @@
+<div class="widget-box" id="recent-box" ng-controller="tasksController">
+<!-- 
+<div class="widget-header header-color-blue">
+<div class="row">
+<div class="col-sm-6">
+<h4 class="bigger lighter">
+	<i class="glyphicon glyphicon-align-justify"></i>&nbsp;
+	TASK MANAGER
+</h4>
+</div>
+<div class="col-sm-3">
+<button ng-click="addNewClicked=!addNewClicked;" class="btn btn-sm btn-danger header-elements-margin"><i class="glyphicon  glyphicon-plus"></i>&nbsp;Add New Task</button>
+</div>
+<div class="col-sm-3">
+
+<input type="text" ng-model="filterTask" class="form-control search header-elements-margin" placeholder="Filter Tasks">
+
+</div>
+</div></div>
+<div class="widget-body ">
+<form ng-init="addNewClicked=false; " ng-if="addNewClicked" id="newTaskForm" class="add-task">
+<div class="form-actions">
+<div class="input-group">
+<input type="text" class="form-control" name="comment" ng-model="taskInput" placeholder="Add New Task" ng-focus="addNewClicked">
+<div class="input-group-btn">
+<button class="btn btn-default" type="submit" ng-click="addTask(taskInput)"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add New Task</button>
+</div>
+</div>
+</div>
+</form>
+<div class="task">
+	<label class="checkbox" ng-repeat="task in tasks | filter : filterTask">
+    <input 
+	type="checkbox"
+	value="{{task.STATUS}}"
+	ng-checked="task.STATUS==2"
+	ng-click="toggleStatus(task.ID,task.STATUS, task.TASK)"/> 
+	<span ng-class="{strike:task.STATUS==2}">{{task.TASK}} [{{task.ID}}] {{today | date:'dd.MM.yyyy' }}</span>
+	<a ng-click="deleteTask(task.ID)" class="pull-right"><i class="glyphicon glyphicon-trash"></i></a>
+    </label>
+</div>
+</div>
+-->
+
+
+
+
+        
+        <div class="hidden-print">
+            <label>Поменять пары работников местами: 
+            	<input type="checkbox" ng-model="check" ng-init="checked=false" /><br/></label><br />            
+        </div>
+
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th><a href="" ng-click="sort('TASK')">
+                        Заказ-наряд
+                        <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('TASK'),
+                                                        'glyphicon-chevron-down' : isSortDown('TASK')}"></i>
+                    </a></th>
+                    <th>Дата</th>
+                    <th><a href="" ng-click="sort('ID')">
+                        Работа
+                        <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('ID'),
+                                                        'glyphicon-chevron-down' : isSortDown('ID')}"></i></th></th>
+                    <th>Норма-час</th>
+                    <th>Выработка</th>
+                    <th><a href="" ng-click="sort('WORKER')">
+                        Назначен
+                        <i class="glyphicon" ng-class="{'glyphicon-chevron-up' : isSortUp('WORKER'),
+                                                        'glyphicon-chevron-down' : isSortDown('WORKER')}"></i></th>
+                    <th class="hidden-print">Назначить</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr ng-repeat="task in tasks | orderBy:sortField:reverse">
+                    <td class="col-xs-2" >{{task.TASK}}</td>
+                    <td class="col-xs-1">{{today | date:'dd.MM.yyyy' }}</td>
+                    <td class="col-xs-3">{{task.ID}}</td>
+                    <td class="col-xs-1">{{task.STATUS}}</td>
+                    <td class="col-xs-1"></td>
+                    <td class="col-xs-2"><span ng-if="!check">
+                                            {{task.WORKER}} <br /> {{task.WORKER2}}
+                                        </span>
+                                        <span ng-if="check">
+                                            {{task.WORKER2}} <br /> {{task.WORKER}}
+                                        </span></td>
+                    <td class="col-xs-2 hidden-print" >
+                        <select class="form-control" id="sel1" ng-model="task.WORKER">
+                        	<option></option>
+                            <option>Ботов Антон</option>
+                            <option>Фокша Максим</option>
+                            <option>Завалишин Алексей</option>
+                            <option>Кутлатов Игорь</option>
+                            <option>Ангерман Александр</option>
+                            <option>Долгов Анатолий</option>
+                            <option>Кизатов Арстан</option>
+                            <option>Заикин Павел</option>
+                            <option>Корнилов Александр</option>
+                            <option>Глушков Олег</option>
+                            <option>Фадеев Александр</option>
+                            <option>Кубраков Геннадий</option>
+
+                        </select>
+                        <select class="form-control" id="sel1" ng-model="task.WORKER2">
+                        	<option></option>
+                            <option>Ботов Антон</option>
+                            <option>Фокша Максим</option>
+                            <option>Завалишин Алексей</option>
+                            <option>Кутлатов Игорь</option>
+                            <option>Ангерман Александр</option>
+                            <option>Долгов Анатолий</option>
+                            <option>Кизатов Арстан</option>
+                            <option>Заикин Павел</option>
+                            <option>Корнилов Александр</option>
+                            <option>Глушков Олег</option>
+                            <option>Фадеев Александр</option>
+                            <option>Кубраков Геннадий</option>
+
+                        </select>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+</div>
